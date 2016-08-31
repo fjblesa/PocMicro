@@ -1,0 +1,42 @@
+--Move out reason
+
+CREATE TABLE MOVEOUTREASON(
+id GUID PRIMARY KEY,
+name TEXT NOT NULL UNIQUE,
+code TEXT NOT NULL UNIQUE,
+active BOOLEAN,
+distributed BOOLEAN
+);
+
+--Water Utility
+CREATE TABLE  WATERUTILITY (
+id GUID PRIMARY KEY,
+code TEXT UNIQUE,
+name TEXT UNIQUE,
+identifier  TEXT NOT NULL,
+active Boolean, 
+);
+
+--Commercial Site
+
+CREATE TABLE  COMMERCIALSITE (
+id GUID PRIMARY KEY,
+code TEXT UNIQUE,
+name TEXT UNIQUE,
+active BOOLEAN,
+waterutilityid GUID ,
+FOREIGN KEY(waterutilityid)
+REFERENCES WATERUTILITY(id)
+);
+
+
+INSERT INTO MOVEOUTREASON (id,name,code,active,distributed)
+VALUES ('9632d369-c5f1-45e1-8c1e-033034b4959b','Petición cliente','CLI','true','true');
+
+
+INSERT INTO MOVEOUTREASON (id,name,code,active,distributed)
+VALUES ('5ce29c91-4fdf-4749-bbc4-24fd3f51d6ec','Baja de oficio','BAO','true','true');
+
+
+INSERT INTO MOVEOUTREASON (id,name,code,active,distributed)
+VALUES ('999592b3-dbd7-4924-a013-8890f67bbd56','Error administrativo','ERR','true','true');
